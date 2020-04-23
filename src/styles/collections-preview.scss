@@ -1,0 +1,37 @@
+.collPreviewWrapper {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 2rem 1rem;
+    .title {
+        font-size: 24px;
+        font-weight: bold;
+        flex-basis: 100%;
+    }
+
+    .preview {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        
+    }
+
+    .collItemWrapper {
+        flex-basis: 22%;
+
+        .collItemBottom {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .collItemImg {
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+        }
+    }
+}

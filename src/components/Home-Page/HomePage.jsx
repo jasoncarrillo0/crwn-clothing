@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/homepage.scss';
-import Menu from '../reusable/Menu';
+import '../../styles/homepage.scss';
+import Menu from './Menu';
 
 
 const HomePage = () => {
