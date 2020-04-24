@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/homepage.scss';
+import './homepage.scss';
 import Menu from './Menu';
 
 

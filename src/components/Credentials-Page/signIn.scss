@@ -1,0 +1,24 @@
+.signInWrapper {
+    width: 350px;
+
+    .signInHeading {
+        font-size: 25px;
+    }
+
+    .signInSubheading {
+        margin-top: 0;
+        margin-bottom: 2rem;
+        color: grey;
+    }
+
+    .signInForm > * {
+        margin-bottom: 1rem;
+    }
+
+    .buttonsWrapper {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+}

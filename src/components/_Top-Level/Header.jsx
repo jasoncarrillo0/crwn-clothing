@@ -1,17 +1,21 @@
 import React from 'react'
-import '../styles/header.scss';
+import './header.scss';
 import { Link } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
-import crown from '../images/crown.svg';
+import { auth } from '../../firebase/utils';
+import crown from '../../images/crown.svg';
 
-const Header = () => {
+const Header = ({ currentUser }) => {
     return (
         <div className="top-nav">
             <ReactSVG src={crown}/>
             <div className="links">
                 <Link to="/shop">SHOP</Link>
                 <Link to="/contact">CONTACT</Link>
-                <Link to="/sign-in">SIGN-IN</Link>
+                {
+                    currentUser ? <div onClick={() => auth.signOut()}>SIGN OUT</div>
+                                : <Link to="/sign-in">SIGN-IN</Link>
+                }
                 <Link to="/cart">CART</Link>
             </div>
         </div>
