@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CustomButton from '../Reusable/CustomButton';
 import { TextField } from '@material-ui/core';
-import { signInWithGoogle } from '../../firebase/utils';
+import { auth, signInWithGoogle } from '../../firebase/utils';
 import './signIn.scss';
 
 
@@ -15,12 +15,20 @@ class SignIn extends Component {
     }
 
     handleChange = (event) => {
-        const { value, name } = event.target.value;
+        const { value, name } = event.target;
         this.setState({ [name]: value }) 
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
         event.preventDefault();
+        const { email, password } = this.state;
+        try {
+            await auth.signInWithEmailAndPassword()
+            this.setState({ email: '', password: ''})
+        }
+        catch (err) {
+            console.log("Error logging in: " + err.message);
+        }
     }
     render() {
         return (
@@ -31,6 +39,7 @@ class SignIn extends Component {
                     <TextField name="email" 
                             type="email" 
                             onChange={this.handleChange}
+                            value={this.state.email}
                             variant="standard"
                             label="Email"
                             fullWidth={true}
@@ -39,13 +48,19 @@ class SignIn extends Component {
                     <TextField name="password" 
                             type="password" 
                             onChange={this.handleChange}
+                            value={this.state.password}
                             variant="standard"
                             label="Password"
                             fullWidth={true}
                             InputLabelProps={{style: {fontFamily: 'Open Sans Condensed',}}}
                     />
-                    {/* <input name="email" type="email" value={this.state.email} onChange={this.handleChange} required/>
-                    <input name="password" type="password" value={this.state.password} onChange={this.handleChange} required/> */}
+                    <TextField name="arabic" 
+                            type="text" 
+                            variant="standard"
+                            label="Arabic"
+                            fullWidth={true}
+                            InputLabelProps={{style: {fontFamily: 'Open Sans Condensed',}}}
+                    />
                     <div className="buttonsWrapper">
                         <CustomButton type="submit">SIGN-IN</CustomButton>
                         <CustomButton 

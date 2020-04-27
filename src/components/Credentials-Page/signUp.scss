@@ -1,0 +1,24 @@
+.signUpWrapper {
+    width: 350px;
+
+    .signUpHeading {
+        font-size: 25px;
+    }
+
+    .signUpSubheading {
+        margin-top: 0;
+        margin-bottom: 2rem;
+        color: grey;
+    }
+
+    .signUpForm > * {
+        margin-bottom: 1rem;
+    }
+
+    .buttonsWrapper {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+}
