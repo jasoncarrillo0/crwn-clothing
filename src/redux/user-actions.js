@@ -1,6 +1,7 @@
+import { ACTION_TYPES } from './action-types';
 export function setCurrentUser(user) {
     return {
-        type: 'SET_CURRENT_USER',
+        type: ACTION_TYPES.SET_CURRENT_USER,
         payload: user
     }
 }

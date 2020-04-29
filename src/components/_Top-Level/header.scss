@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1rem;
+    padding: 0 2rem;
 
     .links {
         display: flex;
@@ -10,9 +10,15 @@
         align-items: center;
         width: 20rem;
         cursor: pointer;
+
         & > * {
             text-decoration: none;
             color: black;
         }
+
+        .svgWrapper {
+            width: 22px;
+        }
+
     }
 }

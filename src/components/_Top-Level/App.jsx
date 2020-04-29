@@ -3,7 +3,7 @@ import HomePage from '../Home-Page/HomePage';
 import Header from './Header';
 import ShopPage from '../Shop-Page/ShopPage';
 import CredentialsPage from '../Credentials-Page/CredentialsPage';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Hats from '../Clothing-Categories/Hats';
 import Jackets from '../Clothing-Categories/Jackets';
 import Sneakers from '../Clothing-Categories/Sneakers';
@@ -16,7 +16,6 @@ import { connect } from 'react-redux';
 
 class App extends Component {    
     unsubscribeFromAuth = null;
-
     componentDidMount() {
         // given from connect high order component
         const { setCurrentUser } = this.props;
@@ -56,8 +55,16 @@ class App extends Component {
                 <Header />
                 <Switch>
                     <Route exact path="/" component={HomePage}/>
-                    <Route path="/sign-in" component={CredentialsPage}/>
+                    <Route path="/sign-in" 
+                           render={ () => this.props.currentUser ? (
+                                <Redirect to="/"/>
+                                ) : (
+                                <CredentialsPage/>
+                                )
+                           }
+                    />
                     <Route path="/shop" component={ShopPage}/>
+                    <Route path="/cart" component={Hats}/>
                     <Route path="/shop/hats" component={Hats}/>
                     <Route path="/shop/jackets" component={Jackets}/>
                     <Route path="/shop/sneakers" component={Sneakers}/>
@@ -68,8 +75,12 @@ class App extends Component {
         )
     }
 }
-
+// params: dispatch function from connect
+// return: an object: {setCurrentUser: dispatchFunc}
+// purpose: allow us to use an an action we defined in the App. It is destructured as setCurrentUser
 function mapDispatchToProps(dispatch) {
+    // key value will be the prop we destructure, and it's value as a key can be called since the value is a function
+    // the key name is essentially becomes the name of the anonymous function
     return {
         setCurrentUser: function(user) {
             return dispatch(setCurrentUser(user));
@@ -77,4 +88,13 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(null, mapDispatchToProps)(App);
+// params: state from root reducer because of connect function below
+// return: a new key:value pair with the current state of "user" from root-reducer.js
+function mapStateToProps({ user }) {
+    // good to think of return statement here as "add the following key: value pair to props"
+    return {
+        currentUser: user.currentUser
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

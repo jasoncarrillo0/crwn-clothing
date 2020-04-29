@@ -5,9 +5,14 @@ import { ReactSVG } from 'react-svg';
 import { auth } from '../../firebase/utils';
 import crown from '../../images/crown.svg';
 import { connect } from 'react-redux';
+import shopBag from '../../images/cart.svg';
+import CartIcon from './CartIcon';
+import CartDropdown from '../Cart/CartDropdown'
 
 
-const Header = ({ currentUser }) => {
+
+
+const Header = ({ currentUser, cartIsHidden }) => {
     return (
         <div className="top-nav">
             <ReactSVG src={crown}/>
@@ -18,8 +23,12 @@ const Header = ({ currentUser }) => {
                     currentUser ? (<div onClick={() => auth.signOut()}>SIGN OUT</div>)
                                 : (<Link to="/sign-in">SIGN-IN</Link>)
                 }
-                <Link to="/cart">CART</Link>
+                <CartIcon/>
             </div>
+            {
+                cartIsHidden ? <CartDropdown/>
+                             : null
+            }
         </div>
     )
 }
@@ -29,7 +38,9 @@ const Header = ({ currentUser }) => {
 // essentially it returns a copy of the user reducer's state
 function mapAppStateToProps(appState) {
     return {
-        currentUser: appState.user.currentUser
+        // value is: rootReducerObj.key.keyReturnedByReducer
+        currentUser: appState.user.currentUser,
+        cartIsHidden: appState.cart.cartIsHidden
     }
 }
 // connect will pass the copy of the user reducer's state to Header

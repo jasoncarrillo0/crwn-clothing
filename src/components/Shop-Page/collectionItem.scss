@@ -1,0 +1,17 @@
+.collItemImg {
+    position: relative;
+    transition: 0.2s;
+
+    .customButton {
+        display: none;
+    }
+
+    &:hover {
+        opacity: 0.85;
+
+        .customButton {
+            display: unset;
+            opacity: 0.8;
+        }
+    }
+}
