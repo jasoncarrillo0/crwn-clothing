@@ -12,7 +12,9 @@ import Mens from '../Clothing-Categories/Mens';
 import { auth, createUserProfileDoc } from '../../firebase/utils'
 import { setCurrentUser } from '../../redux/user-actions';
 import { connect } from 'react-redux';
-
+import { createStructuredSelector } from 'reselect';
+import { selectUser } from '../../redux/user.selectors';
+import CheckoutPage from '../Checkout-Page/CheckoutPage'
 
 class App extends Component {    
     unsubscribeFromAuth = null;
@@ -55,6 +57,7 @@ class App extends Component {
                 <Header />
                 <Switch>
                     <Route exact path="/" component={HomePage}/>
+                    <Route exact path="/checkout" component={CheckoutPage}/>
                     <Route path="/sign-in" 
                            render={ () => this.props.currentUser ? (
                                 <Redirect to="/"/>
@@ -88,13 +91,10 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-// params: state from root reducer because of connect function below
-// return: a new key:value pair with the current state of "user" from root-reducer.js
-function mapStateToProps({ user }) {
-    // good to think of return statement here as "add the following key: value pair to props"
-    return {
-        currentUser: user.currentUser
+const mapStateToProps = createStructuredSelector(
+    {
+        currentUser: selectUser
     }
-}
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

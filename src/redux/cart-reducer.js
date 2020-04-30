@@ -1,5 +1,5 @@
 import { ACTION_TYPES } from './action-types';
-import { initializeOrUpdateCartQuantity } from './cart-action.utils';
+import { initializeOrUpdateCartQuantity, removeItemFromCart } from './cart-action.utils';
 
 const INITIAL_STATE = {
     cartIsHidden: false,
@@ -17,6 +17,16 @@ function cartReducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 items: initializeOrUpdateCartQuantity(state.items, action.payload)
+            }
+        case ACTION_TYPES.REMOVE_ITEM_FROM_CART:
+            return {
+                ...state,
+                items: state.items.filter(cartItem => cartItem.id !== action.payload.id)
+            }
+        case ACTION_TYPES.DECREASE_ITEM_QUANTITY:
+            return {
+                ...state,
+                items: removeItemFromCart(state.items, action.payload)
             }
         default:
             return state;

@@ -1,1 +1,12 @@
 1. sign-in sign-out problem
+
+--> mapStateToProps example
+
+ // params: state from root reducer because of connect function below
+ // return: a new key:value pair with the current state of "user" from root-reducer.js
+ function mapStateToProps({ user }) {
+     // good to think of return statement here as "add the following key: value pair to props"
+     return {
+         currentUser: user.currentUser
+     }
+ }

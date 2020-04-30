@@ -12,3 +12,17 @@ export function addItem(item) {
         payload: item
     }
 }
+
+export function removeItemFromCart(item) {
+    return {
+        type: ACTION_TYPES.REMOVE_ITEM_FROM_CART,
+        payload: item
+    }
+}
+
+export function decreaseItemQuantity(item) {
+    return {
+        type: ACTION_TYPES.DECREASE_ITEM_QUANTITY,
+        payload: item
+    }
+}
