@@ -4,16 +4,16 @@ import { toggleCartHidden } from '../../redux/cart/cart-action';
 import { selectCartItemsCount } from '../../redux/cart/cart.selectors';
 import React from 'react'
 import { createStructuredSelector } from 'reselect';
-import './cartIcon.scss';
+import styles from './CartIcon.module.scss';
 
 // itemCount: return value of memoized selector
 // toggleCartHidden: an action
 function CartIcon({ itemCount, toggleCartHidden }) {
 
     return (
-        <div className="cartIcon" onClick={toggleCartHidden}>
+        <div className={styles.cartIcon} onClick={toggleCartHidden}>
             <ShoppingIcon/>
-            <span className="count">{itemCount}</span>
+            <span className={styles.count}>{itemCount}</span>
         </div>
     )
 }

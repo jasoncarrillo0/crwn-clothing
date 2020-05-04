@@ -1,11 +1,11 @@
 import React from 'react';
-import './homepage.scss';
+import styles from './Homepage.module.scss';
 import Menu from './Menu';
 
 
 const HomePage = () => {
     return (
-        <div className="homepage">
+        <div className={styles.homepage}>
             <Menu/>
         </div>
     );

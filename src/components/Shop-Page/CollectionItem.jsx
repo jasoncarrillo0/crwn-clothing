@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addItem } from '../../redux/cart/cart-action';
 import CustomButton from '../Reusable/CustomButton';
-import './collectionItem.scss';
+import styles from './CollectionItem.module.scss';
 
 // items: [
 //     {
@@ -19,11 +19,11 @@ import './collectionItem.scss';
 //     },
 function CollectionItem({item, addItem}) {
     return (
-        <div className="collItemWrapper">
-            <div className="collItemImg" style={{backgroundImage: `url(${item.imageUrl})`}}>
+        <div className={styles.collItemWrapper}>
+            <div className={styles.collItemImg} style={{backgroundImage: `url(${item.imageUrl})`}}>
                 <CustomButton onClick={() => addItem(item)} inverted>ADD TO CART</CustomButton>
             </div>
-            <div className="collItemBottom">
+            <div className={styles.collItemBottom}>
                 <span>{item.name}</span>
                 <span>${item.price}</span>
             </div>

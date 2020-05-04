@@ -1,5 +1,5 @@
 import React from 'react'
-import './header.scss';
+import styles from './Header.module.scss';
 import { Link } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import { auth } from '../../firebase/utils';
@@ -14,10 +14,11 @@ import { selectUser } from '../../redux/user/user.selectors';
 import { withRouter } from 'react-router-dom';
 
 const Header = ({ currentUser, cartIsHidden, history }) => {
+    console.log(styles);
     return (
-        <div className="top-nav">
-            <ReactSVG className="logo" wrapper="div" src={crown} onClick={() => history.push("/")}/>
-            <div className="links">
+        <div className={styles.topNav}>
+            <ReactSVG className={styles.logo} wrapper="div" src={crown} onClick={() => history.push("/")}/>
+            <div className={styles.links}>
                 <Link to="/shop">SHOP</Link>
                 <CategoriesDropdown/>
                 <Link to="/contact">CONTACT</Link>

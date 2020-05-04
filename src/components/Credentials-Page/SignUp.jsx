@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CustomButton from '../Reusable/CustomButton';
 import { TextField } from '@material-ui/core';
 import { auth, createUserProfileDoc } from '../../firebase/utils';
-import './signUp.scss';
+import styles from './SignUp.module.scss';
 
 
 class SignUp extends Component {
@@ -46,10 +46,10 @@ class SignUp extends Component {
     }
     render() {
         return (
-            <div className="signUpWrapper">
-                <h1 className="signUpHeading">I do not have an account</h1>
-                <p className="signUpSubheading">Sign in with your email and password</p>
-                <form className="signUpForm" onSubmit={this.handleSubmit}>
+            <div className={styles.signUpWrapper}>
+                <h1 className={styles.signUpHeading}>I do not have an account</h1>
+                <p className={styles.signUpSubheading}>Sign in with your email and password</p>
+                <form className={styles.signUpForm} onSubmit={this.handleSubmit}>
                     <TextField name="displayName" 
                             type="text" 
                             value={this.state.displayName}
@@ -89,7 +89,7 @@ class SignUp extends Component {
                             InputLabelProps={{style: {fontFamily: 'Open Sans Condensed',}}}
                             required
                     />
-                    <div className="buttonsWrapper">
+                    <div className={styles.buttonsWrapper}>
                         <CustomButton type="submit">SIGN UP</CustomButton>
                     </div>
                 </form>

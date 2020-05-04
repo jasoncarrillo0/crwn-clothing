@@ -1,0 +1,35 @@
+.topNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+
+    .logo {
+        cursor: pointer;
+    }
+
+    .links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 25rem;
+        cursor: pointer;
+
+        & > a {
+            text-decoration: none;
+            color: black;
+        }
+
+        button {
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .svgWrapper {
+            width: 22px;
+        }
+    }
+}

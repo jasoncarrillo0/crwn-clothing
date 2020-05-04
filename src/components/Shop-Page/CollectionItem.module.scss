@@ -1,0 +1,32 @@
+.collItemWrapper {  
+    margin-bottom: 30px;
+    width: 22%;
+
+    .collItemImg {
+       position: relative;
+       transition: 0.2s;
+       background-position: center;
+       background-size: cover;
+       background-repeat: no-repeat;
+       height: 350px;
+   
+       .customButton {
+           display: none;
+       }
+   
+       &:hover {
+           opacity: 0.85;
+   
+           .customButton {
+               display: unset;
+               opacity: 0.8;
+           }
+       }
+   }
+   
+   .collItemBottom {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+   }
+}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CustomButton from '../Reusable/CustomButton';
 import { TextField } from '@material-ui/core';
 import { auth, signInWithGoogle } from '../../firebase/utils';
-import './signIn.scss';
+import styles from './SignIn.module.scss';
 
 
 class SignIn extends Component {
@@ -31,10 +31,10 @@ class SignIn extends Component {
     }
     render() {
         return (
-            <div className="signInWrapper">
-                <h1 className="signInHeading">I already have an account</h1>
-                <p className="signInSubheading">Sign in with your email and password</p>
-                <form className="signInForm" onSubmit={this.handleSubmit}>
+            <div className={styles.signInWrapper}>
+                <h1 className={styles.signInHeading}>I already have an account</h1>
+                <p className={styles.signInSubheading}>Sign in with your email and password</p>
+                <form className={styles.signInForm} onSubmit={this.handleSubmit}>
                     <TextField name="email" 
                             type="email" 
                             onChange={this.handleChange}
@@ -60,7 +60,7 @@ class SignIn extends Component {
                             fullWidth={true}
                             InputLabelProps={{style: {fontFamily: 'Open Sans Condensed',}}}
                     />
-                    <div className="buttonsWrapper">
+                    <div className={styles.buttonsWrapper}>
                         <CustomButton type="submit">SIGN-IN</CustomButton>
                         <CustomButton 
                             onClick={signInWithGoogle}
