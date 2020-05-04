@@ -11,11 +11,12 @@ import CategoriesDropdown from './CategoriesDropdown';
 import { createStructuredSelector } from 'reselect';
 import { selectCartVisibilityStatus } from '../../redux/cart/cart.selectors'
 import { selectUser } from '../../redux/user/user.selectors';
+import { withRouter } from 'react-router-dom';
 
-const Header = ({ currentUser, cartIsHidden }) => {
+const Header = ({ currentUser, cartIsHidden, history }) => {
     return (
         <div className="top-nav">
-            <ReactSVG src={crown}/>
+            <ReactSVG className="logo" wrapper="div" src={crown} onClick={() => history.push("/")}/>
             <div className="links">
                 <Link to="/shop">SHOP</Link>
                 <CategoriesDropdown/>
@@ -44,4 +45,4 @@ const mapStateToProps = createStructuredSelector(
     }
 );
 // connect will pass the copy of the user reducer's state to Header
-export default connect(mapStateToProps)(Header);
+export default withRouter(connect(mapStateToProps)(Header));

@@ -6,6 +6,10 @@
     padding-right: 2rem;
     padding-top: 1rem;
 
+    .logo {
+        cursor: pointer;
+    }
+
     .links {
         display: flex;
         justify-content: space-between;
@@ -34,8 +38,6 @@
                 border-color: white ;
             }
 
-            
-
             &.dropdown-toggle {
                 color: black;
                 background-color: white;
@@ -62,8 +64,6 @@
             background-color: #dadada;
         }
 
-        
-
         button {
             &:focus {
                 outline: none;
@@ -73,6 +73,5 @@
         .svgWrapper {
             width: 22px;
         }
-
     }
 }
