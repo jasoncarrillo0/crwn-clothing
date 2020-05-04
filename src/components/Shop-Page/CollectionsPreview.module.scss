@@ -1,9 +1,6 @@
 .collPreviewWrapper {
-
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
     margin: 2rem;
+
     .title {
         font-size: 24px;
         font-weight: bold;
@@ -11,12 +8,10 @@
     }
 
     .preview {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 10px;
         width: 100%;
-
-        
     }
 
     .collItemWrapper {
