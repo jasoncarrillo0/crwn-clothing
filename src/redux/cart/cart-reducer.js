@@ -1,4 +1,4 @@
-import { ACTION_TYPES } from './action-types';
+import { ACTION_TYPES } from '../action-types';
 import { initializeOrUpdateCartQuantity, removeItemFromCart } from './cart-action.utils';
 
 const INITIAL_STATE = {

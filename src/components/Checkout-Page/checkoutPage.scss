@@ -5,43 +5,50 @@
     flex-direction: column;
     align-items: center;
     margin: 50px auto 0;
+    padding-bottom: 3rem;
 
     .cartItems {
-      width: 100%;
+        width: 100%;
     }
-  
+
     .itemsHeader {
-      width: 100%;
-      padding: 10px 0;
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid darkgrey;
-
-      .firstChild {
-        width: 20%;
-      }
-
-      .otherChildren {
+        width: 100%;
+        padding: 10px 0;
         display: flex;
-        justify-content: space-evenly;
-        width: 80%;
-        align-items: center;
-      }
-  
-      .headerBlock {
-        text-transform: capitalize;
-        width: 23%;
-  
-        &:last-child {
-          width: 8%;
+        justify-content: space-between;
+        border-bottom: 1px solid darkgrey;
+
+        .firstChild {
+            width: 20%;
         }
-      }
+
+        .otherChildren {
+            display: flex;
+            justify-content: space-evenly;
+            width: 80%;
+            align-items: center;
+        }
+
+        .headerBlock {
+            text-transform: capitalize;
+            width: 23%;
+
+            &:last-child {
+                width: 8%;
+            }
+        }
     }
-  
+
     .total {
-      margin-top: 30px;
-      margin-left: auto;
-      font-size: 36px;
+        margin-top: 30px;
+        margin-left: auto;
+        font-size: 36px;
     }
-  }
-  
+
+    .cardTestWarning {
+      text-align: center;
+      margin: 4rem 0;
+      color: red;
+      font-size: 30px;
+    }
+}

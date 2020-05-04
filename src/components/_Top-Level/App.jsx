@@ -4,16 +4,11 @@ import Header from './Header';
 import ShopPage from '../Shop-Page/ShopPage';
 import CredentialsPage from '../Credentials-Page/CredentialsPage';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Hats from '../Clothing-Categories/Hats';
-import Jackets from '../Clothing-Categories/Jackets';
-import Sneakers from '../Clothing-Categories/Sneakers';
-import Womens from '../Clothing-Categories/Womens';
-import Mens from '../Clothing-Categories/Mens';
 import { auth, createUserProfileDoc } from '../../firebase/utils'
-import { setCurrentUser } from '../../redux/user-actions';
+import { setCurrentUser } from '../../redux/user/user-actions';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectUser } from '../../redux/user.selectors';
+import { selectUser } from '../../redux/user/user.selectors';
 import CheckoutPage from '../Checkout-Page/CheckoutPage'
 
 class App extends Component {    
@@ -67,12 +62,6 @@ class App extends Component {
                            }
                     />
                     <Route path="/shop" component={ShopPage}/>
-                    <Route path="/cart" component={Hats}/>
-                    <Route path="/shop/hats" component={Hats}/>
-                    <Route path="/shop/jackets" component={Jackets}/>
-                    <Route path="/shop/sneakers" component={Sneakers}/>
-                    <Route path="/shop/womens" component={Womens}/>
-                    <Route path="/shop/mens" component={Mens}/>
                 </Switch>
             </>
         )

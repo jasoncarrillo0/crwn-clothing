@@ -5,12 +5,12 @@ import { ReactSVG } from 'react-svg';
 import { auth } from '../../firebase/utils';
 import crown from '../../images/crown.svg';
 import { connect } from 'react-redux';
-import shopBag from '../../images/cart.svg';
+//import shopBag from '../../images/cart.svg';
 import CartIcon from './CartIcon';
 import CartDropdown from '../Cart/CartDropdown'
 import { createStructuredSelector } from 'reselect';
-import { selectCartVisibilityStatus } from '../../redux/cart.selectors'
-import { selectUser } from '../../redux/user.selectors';
+import { selectCartVisibilityStatus } from '../../redux/cart/cart.selectors'
+import { selectUser } from '../../redux/user/user.selectors';
 
 const Header = ({ currentUser, cartIsHidden }) => {
     return (

@@ -1,4 +1,4 @@
-import { ACTION_TYPES } from './action-types';
+import { ACTION_TYPES } from '../action-types';
 export function toggleCartHidden() {
     return {
         type: ACTION_TYPES.TOGGLE_CART_VISIBLE,
