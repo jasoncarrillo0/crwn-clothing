@@ -5,9 +5,9 @@ import { ReactSVG } from 'react-svg';
 import { auth } from '../../firebase/utils';
 import crown from '../../images/crown.svg';
 import { connect } from 'react-redux';
-//import shopBag from '../../images/cart.svg';
 import CartIcon from './CartIcon';
 import CartDropdown from '../Cart/CartDropdown'
+import CategoriesDropdown from './CategoriesDropdown';
 import { createStructuredSelector } from 'reselect';
 import { selectCartVisibilityStatus } from '../../redux/cart/cart.selectors'
 import { selectUser } from '../../redux/user/user.selectors';
@@ -18,6 +18,7 @@ const Header = ({ currentUser, cartIsHidden }) => {
             <ReactSVG src={crown}/>
             <div className="links">
                 <Link to="/shop">SHOP</Link>
+                <CategoriesDropdown/>
                 <Link to="/contact">CONTACT</Link>
                 {
                     currentUser ? (<div onClick={() => auth.signOut()}>SIGN OUT</div>)
