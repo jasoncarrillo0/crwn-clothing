@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './CollectionsOverview.module.scss'
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { withRouter } from 'react-router-dom';
 import { selectCollectionForPreview } from '../../redux/_db/collections-data/collections-data.selector';
 import CollectionsPreview from './CollectionsPreview';
 
@@ -22,4 +23,4 @@ const mapStateToProps = createStructuredSelector(
         firebaseCollections: selectCollectionForPreview
     }
 )
-export default connect(mapStateToProps)(collectionsOverview);
+export default withRouter(connect(mapStateToProps)(collectionsOverview));

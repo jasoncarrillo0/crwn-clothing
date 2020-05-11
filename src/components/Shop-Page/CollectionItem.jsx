@@ -20,7 +20,7 @@ import styles from './CollectionItem.module.scss';
 function CollectionItem({item, addItem}) {
     return (
         <div className={styles.collItemWrapper}>
-            <div className={styles.collItemImg} /*style={{backgroundImage: `url(${item.imageUrl})`}*/>
+            <div className={styles.collItemImg} style={{backgroundImage: `url(${item.imageUrl})`}}>
                 <CustomButton onClick={() => addItem(item)} inverted>ADD TO CART</CustomButton>
             </div>
             <div className={styles.collItemBottom}>

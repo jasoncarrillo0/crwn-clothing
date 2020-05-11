@@ -17,10 +17,10 @@ class HomePage extends React.Component {
     }
 
     render() {
-        const { sectionsAreLoading } = this.props;
+        const { sectionsAreLoading, match } = this.props;
         return (
             <div className={styles.homepage}>
-                <MenuWithSpinner loading={sectionsAreLoading}/>
+                <MenuWithSpinner match={match} loading={sectionsAreLoading}/>
             </div>
         );
     }
