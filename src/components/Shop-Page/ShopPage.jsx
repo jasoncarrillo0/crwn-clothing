@@ -1,16 +1,40 @@
 import React from 'react';
-import CollectionsOverview from './CollectionsOverview';
-import CollectionPage from '../Collection-Page/CollectionPage';
-//import { connect } from 'react-redux';
-//import { createStructuredSelector } from 'reselect';
 import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchCollectionsStartAsync } from '../../redux/_db/collections-data/collections-data.actions';
+import { CollectionsOverviewContainer } from '../HOCs/CollectionsOverviewContainer';
+import { CollectionPageContainer } from '../HOCs/CollectionPageContainer';
 
-function ShopPage({ match }) {
-    return (
-        <div className="shopPageWrapper">
-            <Route exact path={match.path} component={CollectionsOverview}/>
-            <Route path={`${match.path}/:collectionId`} component={CollectionPage}/>
-        </div>
-    )
+
+// ShopPage gets collections from our firebase db
+class ShopPage extends React.Component {
+
+    componentDidMount() {
+        const { fetchCollectionsStartAsync } = this.props;
+        fetchCollectionsStartAsync();
+    }
+
+    render() {
+        const { match } = this.props;
+        return (
+            <div className="shopPageWrapper">
+                <Route exact path={match.path}
+                    component={CollectionsOverviewContainer}
+                />
+                <Route path={`${match.path}/:collectionId`} 
+                    component={CollectionPageContainer}
+                />
+            </div>
+        )
+    }
 }
-export default ShopPage;
+
+
+function mapDispatchToProps(dispatch) {
+    return {
+        fetchCollectionsStartAsync: function() {
+            return dispatch(fetchCollectionsStartAsync());
+        } 
+    }
+}
+export default connect(null, mapDispatchToProps)(ShopPage);

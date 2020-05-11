@@ -6,7 +6,6 @@ const largeStyle = css`
 
 const getLargeStyle = props => {
     if (props.size) {
-        console.log(props);
         return largeStyle;
     }
     else {

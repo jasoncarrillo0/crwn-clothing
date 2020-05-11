@@ -3,6 +3,8 @@ import 'firebase/firestore';
 import 'firebase/auth';
 // firebase obj will have the above imports
 
+
+/* ----------------------SETUP FIREBASE CONNECTION-------------------------------*/
 const config = {
     apiKey: "AIzaSyD7mgmuZIWlFQF1olekhrLRzlRN9aOT3AI",
     authDomain: "crwn-db-23765.firebaseapp.com",
@@ -13,7 +15,6 @@ const config = {
     appId: "1:183816363458:web:16b534b2cca2a40e1d0a5b",
     measurementId: "G-PQ0VS51PEG"
 };
-
 firebase.initializeApp(config);
 // get firebase auth interface (https://firebase.google.com/docs/reference/js/firebase.auth.Auth)
 export const auth = firebase.auth();
@@ -24,6 +25,8 @@ provider.setCustomParameters({ prompt: 'select_account'});
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 export default firebase;
 
+
+/* -------------------------------UTILITIES -----------------------------------------*/
 
 // returns a userRef object, takes in a the auth
 export const createUserProfileDoc = async (userAuth, additionalData) => {
@@ -48,3 +51,42 @@ export const createUserProfileDoc = async (userAuth, additionalData) => {
     }
     return userRef;
 } 
+
+// takes in a collection name to be created
+// takes in an array of objects to be added to the DB
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+    const collectionRef = firestore.collection(collectionKey);
+    const batch         = firestore.batch();
+    objectsToAdd.forEach(obj => {
+        const newDocRef = collectionRef.doc();
+        batch.set(newDocRef, obj);
+    });
+
+    return await batch.commit();
+}
+
+// takes in firebaseCollections.collections
+// returns a properly formatted object
+export const convertCollectionSnapshotToMap = (collections) => {
+    const transformedCollections = collections.docs.map(
+        (doc) => {
+            const { title, items } = doc.data();
+            return {
+                routeName: encodeURI(title.toLowerCase()),
+                id: doc.id,
+                title: title,
+                items: items
+            }
+        });
+    return transformedCollections.reduce( (accumulator, collection) => {
+        accumulator[collection.title.toLowerCase()] = collection;
+        return accumulator;
+    }, {});
+}
+
+// takes in firebaseHomePageSections.sections
+// returns the same array
+export const convertSectionsSnapshotToMap = (sections) => {
+    const transformedSections = sections.docs.map( doc => doc.data());
+    return transformedSections;
+}

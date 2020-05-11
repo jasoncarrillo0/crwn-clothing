@@ -14,7 +14,6 @@ import { selectUser } from '../../redux/user/user.selectors';
 import { withRouter } from 'react-router-dom';
 
 const Header = ({ currentUser, cartIsHidden, history }) => {
-    console.log(styles);
     return (
         <div className={styles.topNav}>
             <ReactSVG className={styles.logo} wrapper="div" src={crown} onClick={() => history.push("/")}/>

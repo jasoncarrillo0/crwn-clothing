@@ -4,8 +4,9 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import userReducer from './user/user-reducer';
 import cartReducer from './cart/cart-reducer';
-import directoryReducer from './directory-data/directory.reducer';
-import collectionsReducer from './collections-data/collections-data.reducer';
+import homePageSectionsReducer from './_db/home-page-sections-data/sections-data.reducer';
+//import collectionsReducer from './collections-data/collections-data.reducer';
+import firebaseCollectionsReducer from './_db/collections-data/collections-data.reducer';
 
 const persistConfig = {
     key: 'root',
@@ -18,8 +19,8 @@ const rootReducer = combineReducers({
     // if the reducer has more than one action, each action will be a key
     user: userReducer,
     cart: cartReducer,
-    directory: directoryReducer,
-    collections: collectionsReducer
+    firebaseHomePageSections: homePageSectionsReducer,
+    firebaseCollections: firebaseCollectionsReducer
 });
-
+ 
 export default persistReducer(persistConfig, rootReducer)
