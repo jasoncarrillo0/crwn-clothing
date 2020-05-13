@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import CustomButton from '../Reusable/CustomButton';
 import { TextField } from '@material-ui/core';
-import { auth, signInWithGoogle } from '../../firebase/utils';
 import styles from './SignIn.module.scss';
-
+import { signInStartWithEmail, signInStartWithGoogle } from '../../redux/user/user-actions';
+import { connect } from 'react-redux';
 
 class SignIn extends Component {
     constructor(props) {
@@ -19,17 +19,15 @@ class SignIn extends Component {
         this.setState({ [name]: value }) 
     }
 
-    handleSubmit = async (event) => {
+    handleSubmit = (event) => {
         event.preventDefault();
-        try {
-            await auth.signInWithEmailAndPassword()
-            this.setState({ email: '', password: ''})
-        }
-        catch (err) {
-            console.log("Error logging in: " + err.message);
-        }
+        const { signInStartWithEmail } = this.props;
+        const emailAndPassword  = this.state;
+        signInStartWithEmail(emailAndPassword);
     }
+
     render() {
+        const { signInStartWithGoogle } = this.props;
         return (
             <div className={styles.signInWrapper}>
                 <h1 className={styles.signInHeading}>I already have an account</h1>
@@ -53,17 +51,13 @@ class SignIn extends Component {
                             fullWidth={true}
                             InputLabelProps={{style: {fontFamily: 'Open Sans Condensed',}}}
                     />
-                    <TextField name="arabic" 
-                            type="text" 
-                            variant="standard"
-                            label="Arabic"
-                            fullWidth={true}
-                            InputLabelProps={{style: {fontFamily: 'Open Sans Condensed',}}}
-                    />
                     <div className={styles.buttonsWrapper}>
-                        <CustomButton type="submit">SIGN-IN</CustomButton>
                         <CustomButton 
-                            onClick={signInWithGoogle}
+                            type="submit">
+                        SIGN-IN</CustomButton>
+                        <CustomButton 
+                            type="button"
+                            onClick={signInStartWithGoogle}
                             isGoogleSignIn={true}
                         >SIGN IN WITH GOOGLE</CustomButton>
                     </div>
@@ -72,4 +66,16 @@ class SignIn extends Component {
         )
     }   
 }
-export default SignIn;
+
+function mapDispatchToProps(dispatch) {
+    return {
+        signInStartWithEmail: function(emailAndPassword) {
+            return dispatch(signInStartWithEmail(emailAndPassword));
+        },
+        signInStartWithGoogle: function() {
+            return dispatch(signInStartWithGoogle());
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SignIn);

@@ -26,3 +26,9 @@ export function decreaseItemQuantity(item) {
         payload: item
     }
 }
+
+export function clearCart() {
+    return {
+        type: ACTION_TYPES.CLEAR_CART
+    }
+}

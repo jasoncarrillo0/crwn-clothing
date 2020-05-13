@@ -20,9 +20,17 @@ firebase.initializeApp(config);
 export const auth = firebase.auth();
 // NoSQL database
 export const firestore = firebase.firestore();
-const provider = new firebase.auth.GoogleAuthProvider();
+export const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account'});
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const getCurrentUser = () => {
+    return new Promise( (resolve, reject) => {
+        const unsubscribe = auth.onAuthStateChanged(userAuth => {
+            unsubscribe();
+            resolve(userAuth);
+        }, reject);
+    })
+}
 export default firebase;
 
 
@@ -89,4 +97,8 @@ export const convertCollectionSnapshotToMap = (collections) => {
 export const convertSectionsSnapshotToMap = (sections) => {
     const transformedSections = sections.docs.map( doc => doc.data());
     return transformedSections;
+}
+
+export const getSnapshotFromUserAuth = (userAuth) => {
+
 }

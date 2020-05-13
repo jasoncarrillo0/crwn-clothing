@@ -28,6 +28,11 @@ function cartReducer(state = INITIAL_STATE, action) {
                 ...state,
                 items: removeItemFromCart(state.items, action.payload)
             }
+        case ACTION_TYPES.CLEAR_CART:
+            return {
+                ...state,
+                items: []
+            }
         default:
             return state;
     }
