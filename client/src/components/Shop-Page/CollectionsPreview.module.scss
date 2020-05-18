@@ -1,5 +1,9 @@
 .collPreviewWrapper {
-    margin: 2rem;
+    margin: 2rem 4.4rem;
+
+    @media screen and (max-width: 500px) {
+        margin: 2rem 2.2rem;
+    }
 
     .title {
         display: inline;
@@ -19,6 +23,10 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-gap: 10px;
         width: 100%;
+
+        @media screen and (max-width: 600px) {
+            grid-template-columns: 1fr 1fr;
+        }
     }
 
     .collItemWrapper {
@@ -33,6 +41,10 @@
             height: 350px;
             background-size: cover;
             background-position: center;
+
+            @media screen and (max-width: 500px) {
+                height: 315px;
+            }
         }
     }
 }

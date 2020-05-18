@@ -1,13 +1,24 @@
+
 .topNav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 4.4rem;
+    padding-right: 4.4rem;
     padding-top: 1rem;
+
+    @media screen and (max-width: 600px) {
+        display: block;
+        justify-content: unset;
+        align-items: unset;
+    }
 
     .logo {
         cursor: pointer;
+
+        @media screen and (max-width: 600px) {
+            text-align: center;
+        }
     }
 
     .links {
@@ -16,6 +27,14 @@
         align-items: center;
         width: 25rem;
         cursor: pointer;
+
+        @media screen and (max-width: 600px) {
+            width: unset;
+        }
+
+        @media screen and (max-width: 425px) {
+            padding-top: 10px;
+        }
 
         & > a {
             text-decoration: none;

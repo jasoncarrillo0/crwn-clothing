@@ -33,6 +33,12 @@ function CategoriesDropdown() {
             .styled:hover {
               background-color: #dadada;
             }
+
+            @media screen and (max-width: 425px) {
+              .btn-gray {
+                display: none;
+              }
+            }
           `}
         </style>
         <DropdownButton

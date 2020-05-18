@@ -8,6 +8,10 @@
        background-size: cover;
        background-repeat: no-repeat;
        height: 350px;
+
+       @media screen and (max-width: 600px) {
+            height: 320px;
+       }
    
        .customButton {
            display: none;

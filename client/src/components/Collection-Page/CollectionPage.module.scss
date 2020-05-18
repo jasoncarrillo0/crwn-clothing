@@ -1,7 +1,7 @@
 .collectionPage {
     display: flex;
     flex-direction: column;
-    padding: 0 2rem;
+    padding: 0 2.2rem;
   
     .title {
       font-size: 38px;
@@ -13,6 +13,17 @@
       grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-gap: 10px;
 
+      @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      @media screen and (max-width: 600px) {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @media screen and (max-width: 425px) {
+        grid-template-columns: 1fr;
+      }
     }
 }
   

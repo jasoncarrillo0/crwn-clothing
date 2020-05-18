@@ -16,6 +16,10 @@
         .name,
         .price {
             width: 34%;
+
+            @media screen and (max-width: 500px) {
+                font-size: 15px;
+            }
         }
     
         .quantity {
