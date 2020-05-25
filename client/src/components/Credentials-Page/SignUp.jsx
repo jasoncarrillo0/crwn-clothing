@@ -39,7 +39,7 @@ class SignUp extends Component {
         return (
             <div className={styles.signUpWrapper}>
                 <h1 className={styles.signUpHeading}>I do not have an account</h1>
-                <p className={styles.signUpSubheading}>Sign in with your email and password</p>
+                <p className={styles.signUpSubheading}>Sign up with your email and password</p>
                 <form className={styles.signUpForm} onSubmit={this.handleSubmit}>
                     <TextField name="displayName" 
                             type="text" 
