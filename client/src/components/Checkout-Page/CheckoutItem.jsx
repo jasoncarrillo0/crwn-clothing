@@ -18,7 +18,7 @@ function CheckoutItem({ addItem, decreaseItemQuantity, removeItemFromCart, cartI
                     <span className={styles.value}>{quantity}</span>
                     <div className={styles.arrow} onClick={() => addItem(cartItem)}>&#10095;</div>
                 </span>
-                <span className={styles.price}>{price}</span>
+                <span className={styles.price}>${price}</span>
                 <div className={styles.removeButton} onClick={() => removeItemFromCart(cartItem)}>&#10005;</div>
             </div>
         </div>

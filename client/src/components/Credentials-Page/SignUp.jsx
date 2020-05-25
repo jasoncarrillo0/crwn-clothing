@@ -3,7 +3,6 @@ import CustomButton from '../Reusable/CustomButton';
 import { TextField } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { signUpStart } from '../../redux/user/user-actions';
-import { auth, createUserProfileDoc } from '../../firebase/utils';
 import styles from './SignUp.module.scss';
 
 

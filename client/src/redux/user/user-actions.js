@@ -55,6 +55,8 @@ export function checkUserSession() {
 
 
 // SIGN UP---------------------------------------------------------------------------
+
+// will never reach reducer because it's only used by the saga, and the saga will then sign in the user
 export function signUpStart(credentials) {
     return {
         type: ACTION_TYPES.SIGN_UP_START,

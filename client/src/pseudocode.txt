@@ -1,12 +1,16 @@
-1. sign-in sign-out problem
+1. Sign Up with Google
+2. Clear cart if signed out
+3. Add dollar cart sign to checkout page
+4. Error messages for signing in and out
+    --> Sign Up Form
+        - 400 = EMAIL_EXISTS
+    ---> Sign In Form
+        - 400 = INVALID_PASSWORD || EMAIL_NOT_FOUND
 
---> mapStateToProps example
 
- // params: state from root reducer because of connect function below
- // return: a new key:value pair with the current state of "user" from root-reducer.js
- function mapStateToProps({ user }) {
-     // good to think of return statement here as "add the following key: value pair to props"
-     return {
-         currentUser: user.currentUser
-     }
- }
+Google Sign In Form
+-> "auth/user-not-found" (when signing in with incorrect email and password)
+-> ""auth/wrong-password" (incorrect password)
+
+Sign Up Form
+-> "auth/email-already-in-use" signing up if the email is already in use. 

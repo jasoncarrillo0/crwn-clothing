@@ -6,7 +6,7 @@ import {
     signOutSuccess, signOutFailure,
     signUpFailure, signInStartWithEmail } from './user-actions';
 // UTILITIES -----------------------------------------------------------------
-function* getSnapshotFromUserAuth(userAuth) {
+function* getSnapshotFromUserAuth(userAuth) { 
     try {
         const userRef      = yield call(createUserProfileDoc, userAuth);
         const userSnapshot = yield userRef.get();
@@ -14,7 +14,7 @@ function* getSnapshotFromUserAuth(userAuth) {
             signInSuccess({id: userSnapshot.id, ...userSnapshot.data()})
         );
     } catch (error) {
-        yield put(signInFailure(error.message))
+        yield put(signInFailure(error.code))
     }
 }
 
@@ -32,7 +32,7 @@ function* signInWithGoogle() {
         const { user } = yield auth.signInWithPopup(provider);
         yield getSnapshotFromUserAuth(user);
     } catch(error) {
-        yield put(signInFailure(error.message))
+        yield put(signInFailure(error.code))
     }
 }
 
@@ -52,7 +52,7 @@ function* signInWithEmail(action) {
         const { user }            = yield auth.signInWithEmailAndPassword(email, password);
         yield getSnapshotFromUserAuth(user);   
     } catch (error) {
-        yield put(signInFailure(error.message))
+        yield put(signInFailure(error.code))
     }
 }
 
@@ -74,7 +74,7 @@ function* checkIfUserIsAuthenticated() {
         }
         yield getSnapshotFromUserAuth(userAuth);
     } catch(error) {
-        yield put(signInFailure(error.message));
+        yield put(signInFailure(error.code));
     }
 }
 
@@ -91,7 +91,7 @@ function* userSignOut() {
         yield auth.signOut();
         yield put(signOutSuccess())
     } catch(error) {
-        yield put(signOutFailure(error.message))
+        yield put(signOutFailure(error.code))
     }
 }
 
@@ -111,7 +111,7 @@ function* signUp(action) {
         yield createUserProfileDoc(user, { displayName });
         yield put(signInStartWithEmail({email, password}));
     } catch(error) {
-        yield put(signUpFailure(error.message))
+        yield put(signUpFailure(error.code))
     }
 }
 
@@ -119,15 +119,33 @@ function* signUp(action) {
 
 // USER SIGN UP FAILURE---------------------------------------------------------------------------
 function* onSignUpFailure() {
-    yield takeLatest(ACTION_TYPES.SIGN_UP_FAILURE, showSignInFailureMsg);
+    yield takeLatest(ACTION_TYPES.SIGN_UP_FAILURE, showSignUpFailureMsg);
 }
-function showSignInFailureMsg(action) {
+function showSignUpFailureMsg(action) {
     const errorMessage = action.payload;
     if (errorMessage === "Password should be at least 6 characters") {
         alert(errorMessage);
     }
+    else if (errorMessage === "auth/email-already-in-use") {
+        alert("Looks like you already have an account. Go ahead and sign in with the sign-in form.");
+    }
 }
 
+
+
+// USER SIGN UP FAILURE---------------------------------------------------------------------------
+function* onSignInFailure() {
+    yield takeLatest(ACTION_TYPES.SIGN_IN_FAILURE, showSignInFailureMsg);
+}
+function showSignInFailureMsg(action) {
+    const errorMessage = action.payload;
+    if (errorMessage === "auth/user-not-found") {
+        alert("Incorrect email or password. Please try again.");
+    }
+    else if (errorMessage === "auth/wrong-password") {
+        alert("Incorrect password. Please try again.");
+    }
+}
 
 
 
@@ -139,6 +157,7 @@ export function* userSagas() {
         call(onEmailSignInStart),
         call(onSignOutStart),
         call(onSignUpStart),
-        call(onSignUpFailure)
+        call(onSignUpFailure),
+        call(onSignInFailure)
     ]);
 }

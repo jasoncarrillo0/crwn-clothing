@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './Header.module.scss';
 import { Link } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
-import { auth } from '../../firebase/utils';
 import crown from '../../images/crown.svg';
 import { connect } from 'react-redux';
 import CartIcon from './CartIcon';

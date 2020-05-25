@@ -18,6 +18,7 @@ function userReducer(state = INITIAL_STATE, action) {
             }
         case ACTION_TYPES.SIGN_IN_FAILURE:
         case ACTION_TYPES.SIGN_OUT_FAILURE:
+        case ACTION_TYPES.SIGN_UP_FAILURE:
             return {
                 ...state,
                 errorMsg: action.payload
