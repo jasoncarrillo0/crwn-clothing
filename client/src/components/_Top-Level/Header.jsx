@@ -16,7 +16,13 @@ import { signOutStart } from '../../redux/user/user-actions';
 const Header = ({ currentUser, cartIsHidden, history, signOutStart }) => {
     return (
         <div className={styles.topNav}>
-            <ReactSVG className={styles.logo} wrapper="div" src={crown} onClick={() => history.push("/")}/>
+            <div className={styles.logoContainer} onClick={() => history.push("/")}>
+                <ReactSVG className={styles.logo} wrapper="div" src={crown}/>
+                <div className={styles.logoText}>
+                    <div>CRWN</div>
+                    <div>CLOTHING</div>
+                </div>
+            </div>
             <div className={styles.links}>
                 <Link to="/shop">SHOP</Link>
                 <CategoriesDropdown/>

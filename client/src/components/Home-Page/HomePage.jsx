@@ -5,9 +5,11 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { fetchHomePageSectionsStart } from '../../redux/_db/home-page-sections-data/sections-data.actions';
 import { selectSectionsAreLoading } from '../../redux/_db/home-page-sections-data/sections-data.selectors';
+import Words from './Words';
 import withSpinner from '../HOCs/withSpinner';
 
 const MenuWithSpinner = withSpinner(Menu);
+
 
 class HomePage extends React.Component {
 
@@ -18,8 +20,10 @@ class HomePage extends React.Component {
 
     render() {
         const { sectionsAreLoading, match } = this.props;
+        
         return (
             <div className={styles.homepage}>
+                <Words/>
                 <MenuWithSpinner match={match} loading={sectionsAreLoading}/>
             </div>
         );

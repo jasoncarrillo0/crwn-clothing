@@ -3,9 +3,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 4.4rem;
-    padding-right: 4.4rem;
-    padding-top: 1rem;
+    background-color: #5eb5ff;
+    padding: 1rem 4.4rem;
+
+    .logoContainer {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        cursor: pointer;
+
+
+        .logoText {
+            margin-left: 1rem;
+        }
+
+        .logo {    
+            @media screen and (max-width: 600px) {
+                text-align: center;
+            }
+        }
+    }
 
     @media screen and (max-width: 600px) {
         display: block;
@@ -13,13 +30,7 @@
         align-items: unset;
     }
 
-    .logo {
-        cursor: pointer;
-
-        @media screen and (max-width: 600px) {
-            text-align: center;
-        }
-    }
+    
 
     .links {
         display: flex;

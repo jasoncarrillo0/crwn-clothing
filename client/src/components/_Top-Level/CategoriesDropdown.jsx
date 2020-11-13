@@ -26,8 +26,8 @@ function CategoriesDropdown() {
 
             .btn-gray.dropdown-toggle {
               color: black;
-              background-color: white;
-              border-color: white;
+              background-color: #5eb5ff;
+              border-color: #5eb5ff;
             }
             
             .styled:hover {

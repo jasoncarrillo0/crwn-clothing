@@ -10,7 +10,6 @@ import { selectUser } from '../../redux/user/user.selectors';
 import CheckoutPage from '../Checkout-Page/CheckoutPage'
 import { checkUserSession } from '../../redux/user/user-actions';
 
-
 class App extends Component {    
 
     componentDidMount() {
